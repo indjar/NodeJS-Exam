@@ -2,7 +2,9 @@ import express from "express";
 import {createConnection} from "mysql2/promise";
 import {config} from "dotenv";
 import User from "./models/Users.js";
+import Group from "./models/Groups.js";
 import usersRouter from "./routes/users.js";
+import groupsRouter from "./routes/groups.js"
 
 
 config();
@@ -19,6 +21,7 @@ const main = async () => {
     });
 try {
     await User.init();
+    await Group.init();
  
     const app = express();
 
@@ -27,6 +30,7 @@ try {
     app.sql = connection;
 
     app.use("/users", usersRouter);
+    app.use("/groups", groupsRouter);
 
 
     app.listen(8080, () => {
