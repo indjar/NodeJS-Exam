@@ -29,7 +29,6 @@ export default class Group {
             const connection = await getConnection();
             const query = "SELECT * FROM billGroups";
             const [data] = await connection.query(query);
-            console.log(data)
             return data.map((name) => new Group(name));
         } catch (e) {
             console.log("There is no groups, please contact CSS", e);

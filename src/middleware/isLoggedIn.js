@@ -8,8 +8,9 @@ export const loggedInMiddleware = (req, res, next) => {
     if (!authorization) {
         return res.sendStatus(403);
     }
-
+    
     const [, token] = authorization.split(" ");
+    console.log([, token])
 
     try {
         const parsed = jwt.verify(token, TOKEN_SECRET);
@@ -17,7 +18,7 @@ export const loggedInMiddleware = (req, res, next) => {
         next();
     } catch (error) {
         if (error instanceof jwt.JsonWebTokenError) {
-            return res.status(403).send({
+            return res.status(404).send({
                 error: error.message,
             });
         }

@@ -35,7 +35,6 @@ export default class User {
             const connection = await getConnection();
             const query = "SELECT full_name, email FROM users";
             const [data] = await connection.query(query);
-            console.log(data)
             return data.map((full_name, email) => new User(full_name, email));
         } catch (e) {
             console.log("There is no users, please contact CSS", e);
