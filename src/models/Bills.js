@@ -26,7 +26,6 @@ export default class Bill {
         try {
             const connection = await getConnection();
             const query = `SELECT b.* FROM bills b 
-                            JOIN accounts a on a.group_id=b.group_id
                             WHERE b.group_id=?`;
             
 
