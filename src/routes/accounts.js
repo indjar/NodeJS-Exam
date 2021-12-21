@@ -6,7 +6,8 @@ const router = Router();
 
 router.get("/", loggedInMiddleware, async (req, res) => {
     try {
-        const {user_id} = req.token;
+        const user = req.token;
+        const user_id=user.acountId
         const account = await Account.getAllByAccountId(user_id);
         res.send({
             account,
