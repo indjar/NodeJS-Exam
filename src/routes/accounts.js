@@ -19,12 +19,15 @@ router.get("/", loggedInMiddleware, async (req, res) => {
 });
 
 router.post("/", loggedInMiddleware, async (req, res) => {
+    console.log(req.token)
     try {
         const {group_id} = req.body;
-        const {user_id} = req.token;
+        const user = req.token;
+        const user_id=user.acountId
         console.log(group_id, user_id)
 
         const account = await Account.create({group_id, user_id});
+        console.log(account)
 
         res.send({
             account,

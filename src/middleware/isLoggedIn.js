@@ -10,7 +10,6 @@ export const loggedInMiddleware = (req, res, next) => {
     }
     
     const [, token] = authorization.split(" ");
-    console.log([, token])
 
     try {
         const parsed = jwt.verify(token, TOKEN_SECRET);
