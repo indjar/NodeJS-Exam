@@ -24,12 +24,13 @@ export default class Account {
     static async getAllByAccountId(id) {
         try {
             const connection = await getConnection();
-            const query = `SELECT g.name, a.* FROM accounts a
+            const query = `SELECT g.name, a.id,a.group_id, a.user_id FROM accounts a
                             JOIN billGroups g on g.id=a.group_id
                             WHERE a.user_id=?`;
            
             const [data] = await connection.query(query, [id]);
-            return data.map(({id, name}) => new Account(id, name));
+            console.log(data)
+            return data.map(({id, name, user_id}) => new Account(id, name, user_id));
         } catch (e) {
             console.log("Couldn't get all accounts", e);
             throw e;
