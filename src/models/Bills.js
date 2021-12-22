@@ -30,7 +30,7 @@ export default class Bill {
             
 
             const [data] = await connection.query(query, [group_id]);
-            return data.map(({id, amount, description}) => new Bill(id, amount, description));
+            return data.map(({id,group_id, amount, description}) => new Bill(id,group_id, amount, description));
         } catch (e) {
             console.log("Couldn't get all bills", e);
             throw e;
