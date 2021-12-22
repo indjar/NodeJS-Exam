@@ -23,8 +23,8 @@ router.post("/", loggedInMiddleware, async (req, res) => {
 
     try {
         const {group_id} = req.body;
-        const user = req.token;
-        const user_id=user.acountId
+        const user_id = req.token;
+        //const user_id=user.acountId
 
         const account = await Account.create({group_id, user_id});
 

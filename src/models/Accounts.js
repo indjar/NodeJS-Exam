@@ -30,7 +30,7 @@ export default class Account {
            
             const [data] = await connection.query(query, [id]);
             console.log(data)
-            return data.map(({id, name, user_id}) => new Account(id, name, user_id));
+            return data.map(({group_id, name, user_id}) => new Account(group_id, name, user_id));
         } catch (e) {
             console.log("Couldn't get all accounts", e);
             throw e;
