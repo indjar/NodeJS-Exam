@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import {createConnection} from "mysql2/promise";
 import {config} from "dotenv";
 import User from "./models/Users.js";
@@ -34,6 +35,8 @@ try {
     app.use(express.json());
 
     app.sql = connection;
+
+    app.use(cors());
 
     app.use("/users", usersRouter);
     app.use("/groups", groupsRouter);
