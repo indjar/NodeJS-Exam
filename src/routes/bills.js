@@ -1,5 +1,7 @@
 import {Router} from "express";
 import Bills from "../models/Bills.js";
+import { body } from "express-validator";
+import { validateErrorsMiddleware } from "../middleware/validateErrors.js"
 
 const router = Router();
 
@@ -17,7 +19,12 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", 
+body(["group_id", "amount", "description"]).exists(),
+body(["group_id","amount"]).isNumeric(),
+body(["description"]).isString(),
+validateErrorsMiddleware,
+async (req, res) => {
    
     try {
         const {group_id, amount, description} = req.body;

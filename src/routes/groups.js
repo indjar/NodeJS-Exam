@@ -1,5 +1,7 @@
 import {Router} from "express";
 import Group from "../models/Groups.js";
+import { body } from "express-validator";
+import { validateErrorsMiddleware } from "../middleware/validateErrors.js"
 
 
 const router=Router();
@@ -17,7 +19,11 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", 
+body("name").exists(),
+body("name").isString(),
+validateErrorsMiddleware,
+async (req, res) => {
     try {
         const {name} = req.body;
         

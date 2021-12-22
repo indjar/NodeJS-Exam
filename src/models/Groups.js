@@ -42,7 +42,7 @@ export default class Group {
             const query = `
                 CREATE TABLE IF NOT EXISTS billGroups (
                     id INTEGER AUTO_INCREMENT NOT NULL,
-                    name VARCHAR(12) NOT NULL,
+                    name VARCHAR(48) NOT NULL,
                     PRIMARY KEY (id)
                 )
             `;
