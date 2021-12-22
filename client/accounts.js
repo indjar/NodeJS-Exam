@@ -1,11 +1,12 @@
 const db="http://localhost:8080/accounts";
 
 const form=document.querySelector('.accounts')
-console.log(form)
+const input=document.getElementById('.id')
+
 const main = async () => {
     const token = sessionStorage.getItem("token");
     try {
-        const response = await fetch("http://localhost:8080/accounts", {
+        const response = await fetch(db, {
             method: "GET",
             headers: {
                 authorization: `Bearer ${token}`,
@@ -30,4 +31,30 @@ const main = async () => {
 };
 main();
 
+const button = document.getElementById("add");
 
+button.onclick = async () => {
+    const group_id=input.value;
+    console.log(group_id)
+    try {
+        const token = sessionStorage.getItem("token");
+        console.log(token,db)
+        const response = await fetch(db, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                group_id,
+            }),
+        });
+
+        const data = await response.json();
+
+        if (data.error) throw new Error(data.error);
+
+    } catch (error) {
+        console.error("Something went wrong");
+    }
+};
