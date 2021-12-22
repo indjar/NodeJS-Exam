@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Register</title>
+    <script src="./register.js" type="module" defer></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+        <h1 class="nav">
+            <a href="#">
+                <img src="./css/images/logo.png" alt="Logo" srcset="">
+            </a>
+        </h1>
+        <div class="nav">
+            <a href="./login.html">
+                <h3>Login</h3>
+            </a>
+        </div>
+        </div>
+    </header>
+    <main >
+        <div class="headLog">
+        <div class="login">
+            <h2>Register</h2>
+            <form action="" method="POST">
+                <label for="full_name">Full name:</label>
+                <input name="full_name" type="text" placeholder="Jonas Serbentautas" id="full_name" required="">
+
+                <label for="email">Email:</label>
+                <input name="email" type="email" placeholder="email@email.com" id="email" required="">
+
+                <label for="password">Password:</label>
+                <input name="password" type="password" placeholder="password" id="password" minlength="8" required="">
+
+                <label for="password2">Repeat password:</label>
+                <input name="password2" type="password" placeholder="repeat password" id="password2" minlength="8" required="">
+
+                <button class="register">Register</button>
+            </form>
+            </div>
+        </div>
+    </main>
+    
+</body>
+</html>
