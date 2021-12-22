@@ -36,6 +36,7 @@ document.forms[0].addEventListener("submit", async (e)=>{
     console.log(full_name, email, password, password2);
 
     const added=await addUser(full_name, email, password);
+    alert ("New user added")
     location.reload();
     return added;
 }
