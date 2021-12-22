@@ -21,13 +21,12 @@ export default class Account {
         }
     }
 
-    static async getAllByAccountId(user_id) {
+    static async getAllByAccountId(id) {
         try {
             const connection = await getConnection();
             const query = "SELECT * FROM accounts WHERE user_id=?";
-            console.log({user_id});
-
-            const [data] = await connection.query(query, [user_id]);
+           
+            const [data] = await connection.query(query, [id]);
             return data.map(({id}) => new Account(id));
         } catch (e) {
             console.log("Couldn't get all accounts", e);

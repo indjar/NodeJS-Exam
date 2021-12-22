@@ -4,11 +4,10 @@ import Account from "../models/Accounts.js";
 
 const router = Router();
 
-router.get("/", loggedInMiddleware, async (req, res) => {
+router.get("/:id", async (req, res) => {
     try {
-        const user = req.token;
-        const user_id=user.acountId
-        const account = await Account.getAllByAccountId(user_id);
+        const id=Number (req.params.id)
+        const account = await Account.getAllByAccountId(id);
         res.send({
             account,
         });
