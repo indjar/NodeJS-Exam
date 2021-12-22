@@ -24,13 +24,13 @@ export default class Bill {
 
     static async getAllByGroupId(group_id) {
         try {
-            const connection = await getConnection();
+            const connection = await getConnection(group_id);
             const query = `SELECT b.* FROM bills b 
-                            WHERE b.group_id=?`;
+                             WHERE b.group_id=?`;
             
 
             const [data] = await connection.query(query, [group_id]);
-            return data.map(({id}) => new Bill(id));
+            return data.map(({id, amount, description}) => new Bill(id, amount, description));
         } catch (e) {
             console.log("Couldn't get all bills", e);
             throw e;

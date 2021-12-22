@@ -4,9 +4,11 @@ import {config} from "dotenv";
 import User from "./models/Users.js";
 import Group from "./models/Groups.js";
 import Account from "./models/Accounts.js";
+import Bill from "./models/Bills.js"
 import usersRouter from "./routes/users.js";
 import groupsRouter from "./routes/groups.js"
 import accountdRouter from "./routes/accounts.js"
+import billRouter from "./routes/bills.js"
 
 
 config();
@@ -25,6 +27,7 @@ try {
     await User.init();
     await Group.init();
     await Account.init();
+    await Bill.init();
  
     const app = express();
 
@@ -35,7 +38,7 @@ try {
     app.use("/users", usersRouter);
     app.use("/groups", groupsRouter);
     app.use("/accounts", accountdRouter);
-
+    app.use("/bills", billRouter);
     app.listen(8080, () => {
         console.log("http://localhost:8080");
     });
