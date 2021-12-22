@@ -7,7 +7,7 @@ export default class Account {
         this.user_id=user_id;
     }
 
-    static async create({group_id, user_id }) {
+    static async create({group_id, user_id}) {
         try {
             const connection = await getConnection();
             const query = "INSERT INTO accounts (group_id, user_id) VALUES (?, ?);";
@@ -24,10 +24,12 @@ export default class Account {
     static async getAllByAccountId(id) {
         try {
             const connection = await getConnection();
-            const query = "SELECT * FROM accounts WHERE user_id=?";
+            const query = `SELECT g.name, a.* FROM accounts a
+                            JOIN billGroups g on g.id=a.group_id
+                            WHERE a.user_id=?`;
            
             const [data] = await connection.query(query, [id]);
-            return data.map(({id}) => new Account(id));
+            return data.map(({id, name}) => new Account(id, name));
         } catch (e) {
             console.log("Couldn't get all accounts", e);
             throw e;
