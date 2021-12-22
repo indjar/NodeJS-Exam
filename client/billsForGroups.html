@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Bills</title>
+    <script src="./billsForGroups.js" type="module" defer></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+        <h1 class="nav">
+            <a href="#">
+                <img src="./css/images/logo.png" alt="Logo" srcset="">
+            </a>
+        </h1>
+        <div class="nav">
+            <a href="./Login.html">
+                <h3>Login</h3>
+            </a>
+        </div>
+        </div>
+    </header>
+    <main >
+        <div class="headLog">
+            <div class="addBill">
+            <h1>Add bill</h1>
+            <form action="" method="POST">
+                <label for="text">Group ID:</label>
+                <input name="text" type="text" placeholder="example: 2" id="id" required="">
+                <label for="number">Amount:</label>
+                <input name="number" type="number" placeholder="EUR" id="amount" required="">
+                <label for="text">Description:</label>
+                <input name="text" type="text" placeholder="Description" id="description" required="">
+
+                <button class="add" id="add">Add</button>
+            </form>
+        </div>
+        
+    </div>
+        <div class="bills" id="bills">
+            <h1>Bills</h1>
+
+        </div>
+        
+    </main>
+    
+</body>
+</html>
